@@ -16,16 +16,16 @@ import { getAllTasks } from './api/tasks'
 // import './App.css';
 
 function App() {
-	const [tasks, setTasks] = useState([])
-	const [isHidden, setIsHidden] = useState(false)
-	const navigate = useNavigate();
+	const [tasks, setTasks] = useState([]);
+	const [action, setAction] = useState('create');
+	const [selected, setSelected] = useState({})
 
 	useEffect(() => {
 		getAllTasks()
 			.then(res => {
 				setTasks(Object.values(res));
 			})
-	}, [])
+	}, [tasks])
 
 	const locales = {
 		'bg-bg': require('date-fns/locale/bg')
@@ -44,28 +44,24 @@ function App() {
 
 		if (e.target.className == 'rbc-event-content') {
 			const currentTask = tasks.find(t => t.title === e.target.title);
-			setIsHidden(true);
-			navigate(`/edit/${currentTask._id}`);
+			setSelected(currentTask);
+			setAction('details')
 		}
 	}
 
 	return (
 		<div className="App" onClick={onClickHandler}>
-			<Create isHidden={isHidden}  />
-			<Routes>
-			
-				<Route path='/' element={
-					<Calendar localizer={localizer}
-						events={tasks}
-						startAccessor="start"
-						endAccessor="end"
-						style={{ height: 700, padding: '2rem' }}
-					/>} />
+			{action === 'create' && <Create />}
+			{action === 'edit' && <Edit task={selected}/>}
+			{action === 'details' && <Details task={selected}/>}
 
-				<Route path='/edit/:eventId' element={<Edit setIsHidden={setIsHidden} isHidden={isHidden}/>} />
-				<Route path='/event/:eventId' element={<Details />} />
+			<Calendar localizer={localizer}
+				events={tasks}
+				startAccessor="start"
+				endAccessor="end"
+				style={{ height: 700, padding: '2rem' }}
+			/>
 
-			</Routes>
 		</div>
 	);
 }

@@ -1,12 +1,11 @@
 import { createTask, deleteTask } from '../../api/tasks';
-import { useNavigate } from 'react-router-dom'
+
 import './Create.css'
 
 
 const Create = ({
     isHidden
 }) => {
-    const navigate = useNavigate()
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -14,16 +13,18 @@ const Create = ({
         const task = {
             title: formData.get('title'),
             start: formData.get('date'),
-            end: formData.get('date')
+            end: formData.get('date'),
+            startTime: formData.get('start-time'),
+            endTime: formData.get('end-time'),
         }
+
         createTask(task);
         e.target.reset()
-        navigate('/')
 
     }
 
     return (
-        <div className="form-wrapper" style={{ display: isHidden ?  'none' :'flex'  }}>
+        <div className="form-wrapper" style={{ display: isHidden ? 'none' : 'flex' }}>
             <h2>ADD NEW TASK</h2>
             <form onSubmit={onSubmit} >
                 <label htmlFor="title">
@@ -31,6 +32,12 @@ const Create = ({
                 </label>
                 <label htmlFor="date">
                     <input type="date" name="date" />
+                </label>
+                <label htmlFor="start-time">
+                    <input type="time" name="start-time" />
+                </label>
+                <label htmlFor="end-time">
+                    <input type="time" name="end-time" />
                 </label>
                 <button>Add</button>
             </form>
