@@ -53,7 +53,7 @@ function App() {
 		<div className="App" onClick={onClickHandler}>
 			{action === 'create' && <Create />}
 			{action === 'edit' && <Edit task={selected}/>}
-			{action === 'details' && <Details task={selected}/>}
+			{action === 'details' && <Details task={selected} action={action} setAction={setAction}/>}
 
 			<Calendar localizer={localizer}
 				events={tasks}

@@ -1,6 +1,19 @@
+import { deleteTask } from "../../api/tasks";
+
 const Details = ({
-    task
+    task,
+    action,
+    setAction
 }) => {
+
+    function onEditHandler(e) {
+
+    }
+
+    function onDeleteHandler() {
+        deleteTask(task._id)
+        setAction('create')
+    }
 
     return (
         <div className="details-container">
@@ -8,7 +21,7 @@ const Details = ({
             <p>Start at: {task.startTime}</p>
             <p>End at: {task.endTime}</p>
             <button>Edit</button>
-            <button>Delete</button>
+            <button onClick={onDeleteHandler}>Delete</button>
             <button className="closeBtn">X</button>
         </div>
     );
