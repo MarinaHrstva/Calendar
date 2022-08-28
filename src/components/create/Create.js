@@ -18,6 +18,10 @@ const Create = ({
             endTime: formData.get('end-time'),
         }
 
+        if(Object.values(task).some(t=>t==='')){
+           return alert('All fields are required!')
+        }
+        
         createTask(task);
         e.target.reset()
 
@@ -27,16 +31,16 @@ const Create = ({
         <div className="form-wrapper" style={{ display: isHidden ? 'none' : 'flex' }}>
             <h2>ADD NEW TASK</h2>
             <form onSubmit={onSubmit} >
-                <label htmlFor="title">
+                <label htmlFor="title">Task:
                     <input type="text" name="title" id="title" />
                 </label>
-                <label htmlFor="date">
+                <label htmlFor="date">Date:
                     <input type="date" name="date" />
                 </label>
-                <label htmlFor="start-time">
+                <label htmlFor="start-time">Start at:
                     <input type="time" name="start-time" />
                 </label>
-                <label htmlFor="end-time">
+                <label htmlFor="end-time">End at:
                     <input type="time" name="end-time" />
                 </label>
                 <button>Add</button>
