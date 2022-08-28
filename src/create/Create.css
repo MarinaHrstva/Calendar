@@ -1,0 +1,21 @@
+.form-wrapper  {
+    font-family: Helvetica, sans-serif;
+ padding: 1.5rem;
+ margin-left: 30%;
+}
+
+.form-wrapper form{
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.form-wrapper form input:first-of-type{
+    width: 280px;
+}
+
+.form-wrapper form input,
+.form-wrapper form button{
+    height: 35px;
+    border-radius: 5px;
+}

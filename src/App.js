@@ -11,6 +11,7 @@ import '../node_modules/react-big-calendar/lib/css/react-big-calendar.css'
 
 function App() {
 
+  
   const locales = {
     'bg-bg': require('date-fns/locale/bg')
   }
@@ -22,6 +23,7 @@ function App() {
     getDay,
     locales
   })
+
 
   const events = [
     {
@@ -44,14 +46,21 @@ function App() {
     }
   ]
 
+  function onClickHandler(e) {
+   if(e.target.className=='rbc-event-content'){
+
+   }
+  }
+
   return (
-    <div className="App">
+    <div className="App"  onClick={onClickHandler}>
       <Create />
       <Calendar localizer={localizer}
         events={events}
         startAccessor="start"
         endAccessor="end"
-        style={{ height: 700, padding: '2rem' }} />
+        style={{ height: 700, padding: '2rem' }}
+        />
     </div>
   );
 }

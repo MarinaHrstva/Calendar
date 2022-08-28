@@ -1,3 +1,6 @@
+import './Create.css'
+
+
 const Create = () => {
 
 
@@ -9,7 +12,7 @@ const Create = () => {
 
     return (
         <div className="form-wrapper">
-            <h2>Add New Event</h2>
+            <h2>ADD NEW TASK</h2>
             <form onSubmit={onSubmit}>
                 <label htmlFor="title">
                     <input type="text" name="title" id="title" />
