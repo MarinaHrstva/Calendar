@@ -3,9 +3,11 @@ import format from 'date-fns/format'
 import parse from 'date-fns/parse'
 import startOfWeek from 'date-fns/startOfWeek'
 import getDay from 'date-fns/getDay'
-// import './App.css';
+
+import Create from './create/Create'
 import '../node_modules/react-big-calendar/lib/css/react-big-calendar.css'
 
+// import './App.css';
 
 function App() {
 
@@ -24,9 +26,10 @@ function App() {
   const events = [
     {
       title: 'meeting',
-      start: new Date(),
+      start: "2022-08-27",
       end: new Date(),
-      allDay: true
+      allDay: false,
+      time: '16:00'
     },
     {
       title: 'meeting',
@@ -43,6 +46,7 @@ function App() {
 
   return (
     <div className="App">
+      <Create />
       <Calendar localizer={localizer}
         events={events}
         startAccessor="start"
