@@ -1,0 +1,31 @@
+.form-wrapper {
+    font-family: Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5rem;
+}
+
+.form-wrapper form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.form-wrapper form input,
+.form-wrapper form button {
+    padding: 0.5rem;
+    height: 35px;
+    border-radius: 5px;
+    width: 250px;
+}
+
+.form-wrapper form button{
+    width: 220px;
+}
+
+.form-wrapper form button:hover{
+    cursor: pointer;
+    background-color: lightgrey;
+ }

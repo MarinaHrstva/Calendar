@@ -1,8 +1,10 @@
+import { useState } from 'react';
 import './Create.css'
 
 
 const Create = () => {
 
+	const [newEvent, setNewEvent] = useState({})
 
     const onSubmit = (e) => {
         e.preventDefault();

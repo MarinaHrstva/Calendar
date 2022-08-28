@@ -4,65 +4,58 @@ import parse from 'date-fns/parse'
 import startOfWeek from 'date-fns/startOfWeek'
 import getDay from 'date-fns/getDay'
 
-import Create from './create/Create'
+import { Route, Routes, useNavigate } from 'react-router-dom';
+
+import Create from './components/create/Create'
 import '../node_modules/react-big-calendar/lib/css/react-big-calendar.css'
+import Edit from './components/edit/Edit'
+import Details from './components/details/Details'
+import { useState } from 'react'
 
 // import './App.css';
 
 function App() {
+	const [events, setEvents] = useState([])
+	const navigate = useNavigate();
 
-  
-  const locales = {
-    'bg-bg': require('date-fns/locale/bg')
-  }
+	const locales = {
+		'bg-bg': require('date-fns/locale/bg')
+	}
 
-  const localizer = dateFnsLocalizer({
-    format,
-    parse,
-    startOfWeek,
-    getDay,
-    locales
-  })
+	const localizer = dateFnsLocalizer({
+		format,
+		parse,
+		startOfWeek,
+		getDay,
+		locales
+	})
 
 
-  const events = [
-    {
-      title: 'meeting',
-      start: "2022-08-27",
-      end: new Date(),
-      allDay: false,
-      time: '16:00'
-    },
-    {
-      title: 'meeting',
-      start: new Date(),
-      end: new Date(),
-      allDay: true
-    }, {
-      title: 'meeting',
-      start: new Date(),
-      end: new Date(),
-      allDay: true
-    }
-  ]
+	function onClickHandler(e) {
 
-  function onClickHandler(e) {
-   if(e.target.className=='rbc-event-content'){
+		if (e.target.className == 'rbc-event-content') {
+			console.log(e.target.title);
+		}
+	}
 
-   }
-  }
+	return (
+		<div className="App" onClick={onClickHandler}>
+			<Routes>
+				<Route path='/create' element={<Create/>}/>
+				<Route path='/' element={
+					<Calendar localizer={localizer}
+						events={events}
+						startAccessor="start"
+						endAccessor="end"
+						style={{ height: 700, padding: '2rem' }}
+					/>} />
 
-  return (
-    <div className="App"  onClick={onClickHandler}>
-      <Create />
-      <Calendar localizer={localizer}
-        events={events}
-        startAccessor="start"
-        endAccessor="end"
-        style={{ height: 700, padding: '2rem' }}
-        />
-    </div>
-  );
+				<Route path='/edit/:eventId' element={<Edit/>} />
+				<Route path='/event/:eventId' element={<Details/>} />
+
+			</Routes>
+		</div>
+	);
 }
 
 export default App;
