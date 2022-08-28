@@ -1,23 +1,35 @@
-import logo from './logo.svg';
+import { Calendar, dateFnsLocalizer } from 'react-big-calendar'
+import format from 'date-fns/format'
+import parse from 'date-fns/parse'
+import startOfWeek from 'date-fns/startOfWeek'
+import getDay from 'date-fns/getDay'
+// import bg from 'date-fns/locale/bg-bg'
 import './App.css';
+import bg from 'date-fns/locale/bg'
+
 
 function App() {
+
+  const locales = {
+    'bg-bg': require('date-fns/locale/bg')
+  }
+
+  const localizer = dateFnsLocalizer({
+    format,
+    parse,
+    startOfWeek,
+    getDay,
+    locales
+  })
+
+  const events = [{
+    title: 'meeting',
+    start: new Date(22, 8, 0)
+  }]
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Calendar localizer={localizer} events={events} />
     </div>
   );
 }
