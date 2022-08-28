@@ -1,15 +1,16 @@
-import { useState } from 'react';
+import { createTask, deleteTask } from '../../api/tasks';
 import './Create.css'
 
 
 const Create = () => {
 
-	const [newEvent, setNewEvent] = useState({})
 
     const onSubmit = (e) => {
         e.preventDefault();
         const formData = new FormData(e.target)
-        console.log(Object.fromEntries(formData));
+        const task = Object.fromEntries(formData)
+        createTask(task);
+        e.target.reset()
     }
 
     return (

@@ -1334,13 +1334,13 @@
         }
     };
     var seedData = {
-        events:
+        tasks:
             []
         
     };
     var rules$1 = {
         users: {
-            ".create": true,
+            ".create": false,
             ".read": [
                 "Owner"
             ],
