@@ -1,8 +1,12 @@
 import { createTask, deleteTask } from '../../api/tasks';
+import { useNavigate } from 'react-router-dom'
 import './Create.css'
 
 
-const Create = () => {
+const Create = ({
+    isHidden
+}) => {
+    const navigate = useNavigate()
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -14,12 +18,14 @@ const Create = () => {
         }
         createTask(task);
         e.target.reset()
+        navigate('/')
+
     }
 
     return (
-        <div className="form-wrapper">
+        <div className="form-wrapper" style={{ display: isHidden ?  'none' :'flex'  }}>
             <h2>ADD NEW TASK</h2>
-            <form onSubmit={onSubmit}>
+            <form onSubmit={onSubmit} >
                 <label htmlFor="title">
                     <input type="text" name="title" id="title" />
                 </label>

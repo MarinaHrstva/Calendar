@@ -8,24 +8,23 @@
 
 .form-wrapper form {
     display: flex;
-    flex-direction: column;
     gap: 1.5rem;
     align-items: center;
 }
 
 .form-wrapper form input,
 .form-wrapper form button {
-    padding: 0.5rem;
-    height: 35px;
+    padding: 0.25rem;
+    height: 25px;
     border-radius: 5px;
-    width: 250px;
+    width: 200px;
 }
 
-.form-wrapper form button{
-    width: 220px;
+.form-wrapper form button {
+    width: 150px;
 }
 
-.form-wrapper form button:hover{
+.form-wrapper form button:hover {
     cursor: pointer;
     background-color: lightgrey;
- }
+}

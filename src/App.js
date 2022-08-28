@@ -17,6 +17,7 @@ import { getAllTasks } from './api/tasks'
 
 function App() {
 	const [tasks, setTasks] = useState([])
+	const [isHidden, setIsHidden] = useState(false)
 	const navigate = useNavigate();
 
 	useEffect(() => {
@@ -42,14 +43,17 @@ function App() {
 	function onClickHandler(e) {
 
 		if (e.target.className == 'rbc-event-content') {
-			console.log(e.target.title);
+			const currentTask = tasks.find(t => t.title === e.target.title);
+			setIsHidden(true);
+			navigate(`/edit/${currentTask._id}`);
 		}
 	}
 
 	return (
 		<div className="App" onClick={onClickHandler}>
+			<Create isHidden={isHidden}  />
 			<Routes>
-				<Route path='/create' element={<Create />} />
+			
 				<Route path='/' element={
 					<Calendar localizer={localizer}
 						events={tasks}
@@ -58,7 +62,7 @@ function App() {
 						style={{ height: 700, padding: '2rem' }}
 					/>} />
 
-				<Route path='/edit/:eventId' element={<Edit />} />
+				<Route path='/edit/:eventId' element={<Edit setIsHidden={setIsHidden} isHidden={isHidden}/>} />
 				<Route path='/event/:eventId' element={<Details />} />
 
 			</Routes>
