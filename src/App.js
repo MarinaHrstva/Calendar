@@ -3,9 +3,8 @@ import format from 'date-fns/format'
 import parse from 'date-fns/parse'
 import startOfWeek from 'date-fns/startOfWeek'
 import getDay from 'date-fns/getDay'
-// import bg from 'date-fns/locale/bg-bg'
-import './App.css';
-import bg from 'date-fns/locale/bg'
+// import './App.css';
+import '../node_modules/react-big-calendar/lib/css/react-big-calendar.css'
 
 
 function App() {
@@ -22,14 +21,33 @@ function App() {
     locales
   })
 
-  const events = [{
-    title: 'meeting',
-    start: new Date(22, 8, 0)
-  }]
+  const events = [
+    {
+      title: 'meeting',
+      start: new Date(),
+      end: new Date(),
+      allDay: true
+    },
+    {
+      title: 'meeting',
+      start: new Date(),
+      end: new Date(),
+      allDay: true
+    }, {
+      title: 'meeting',
+      start: new Date(),
+      end: new Date(),
+      allDay: true
+    }
+  ]
 
   return (
     <div className="App">
-      <Calendar localizer={localizer} events={events} />
+      <Calendar localizer={localizer}
+        events={events}
+        startAccessor="start"
+        endAccessor="end"
+        style={{ height: 700, padding: '2rem' }} />
     </div>
   );
 }
