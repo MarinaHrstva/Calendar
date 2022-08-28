@@ -9,6 +9,7 @@ const Create = ({
 
     const onSubmit = (e) => {
         e.preventDefault();
+        
         const formData = new FormData(e.target)
         const task = {
             title: formData.get('title'),
@@ -18,10 +19,10 @@ const Create = ({
             endTime: formData.get('end-time'),
         }
 
-        if(Object.values(task).some(t=>t==='')){
-           return alert('All fields are required!')
+        if (Object.values(task).some(t => t === '')) {
+            return alert('All fields are required!')
         }
-        
+
         createTask(task);
         e.target.reset()
 
