@@ -4,11 +4,14 @@ import './Create.css'
 
 const Create = () => {
 
-
     const onSubmit = (e) => {
         e.preventDefault();
         const formData = new FormData(e.target)
-        const task = Object.fromEntries(formData)
+        const task = {
+            title: formData.get('title'),
+            start: formData.get('date'),
+            end: formData.get('date')
+        }
         createTask(task);
         e.target.reset()
     }

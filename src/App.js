@@ -10,13 +10,21 @@ import Create from './components/create/Create'
 import '../node_modules/react-big-calendar/lib/css/react-big-calendar.css'
 import Edit from './components/edit/Edit'
 import Details from './components/details/Details'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { getAllTasks } from './api/tasks'
 
 // import './App.css';
 
 function App() {
-	const [events, setEvents] = useState([])
+	const [tasks, setTasks] = useState([])
 	const navigate = useNavigate();
+
+	useEffect(() => {
+		getAllTasks()
+			.then(res => {
+				setTasks(Object.values(res));
+			})
+	}, [])
 
 	const locales = {
 		'bg-bg': require('date-fns/locale/bg')
@@ -41,17 +49,17 @@ function App() {
 	return (
 		<div className="App" onClick={onClickHandler}>
 			<Routes>
-				<Route path='/create' element={<Create/>}/>
+				<Route path='/create' element={<Create />} />
 				<Route path='/' element={
 					<Calendar localizer={localizer}
-						events={events}
+						events={tasks}
 						startAccessor="start"
 						endAccessor="end"
 						style={{ height: 700, padding: '2rem' }}
 					/>} />
 
-				<Route path='/edit/:eventId' element={<Edit/>} />
-				<Route path='/event/:eventId' element={<Details/>} />
+				<Route path='/edit/:eventId' element={<Edit />} />
+				<Route path='/event/:eventId' element={<Details />} />
 
 			</Routes>
 		</div>
