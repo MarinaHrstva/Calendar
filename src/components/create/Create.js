@@ -39,7 +39,7 @@ const Create = ({ setTasks }) => {
         <label htmlFor="end-time">End at: </label>
         <input type="time" name="end-time" id="end-time" />
 
-        <button>Add</button>
+        <button>ADD</button>
       </form>
     </div>
   );

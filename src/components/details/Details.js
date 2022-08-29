@@ -21,10 +21,10 @@ const Details = ({ task, setAction, onClose}) => {
         <p><span>End at:</span> {task.endTime}</p>
       </div>
       <div className="buttons-container">
-        <button onClick={onEditHandler}>Edit</button>
-        <button onClick={onDeleteHandler}>Delete</button>
+        <button onClick={onEditHandler}>EDIT</button>
+        <button onClick={onDeleteHandler}>DELETE</button>
         <button className="closeBtn"
-         onClick={onClose}>Back
+         onClick={onClose}>BACK
         </button>
       </div>
     </div>

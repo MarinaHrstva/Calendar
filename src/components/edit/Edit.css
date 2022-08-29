@@ -4,6 +4,7 @@
     display: flex;
     gap: 0.5rem;
     align-items: center;
+    padding-right: 5rem;
 }
 
 .edit-form input{
@@ -14,11 +15,14 @@
     border: 0.5px solid #3174ad;
     width: 200px;
 }
+.edit-form label:first-of-type{
+    margin-left: 7rem;
+}
 
-.edit-form input button{
+.edit-form  button{
     border: 0.5px solid #3174ad;
     border-radius: 5px;
-    width: 150px;
+    width: 100px;
     background-color: white;
     color: #3174ad;
     font-weight: bold;
@@ -26,7 +30,11 @@
     transition: all 300ms ease-in;
 }
 
-.edit-form input button:hover{
+.edit-form  button:first-of-type{
+    margin-right: 0.5rem;
+}
+
+.edit-form  button:hover{
     cursor: pointer;
     background-color: #3174ad;
     color: white;

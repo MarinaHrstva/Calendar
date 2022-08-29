@@ -42,21 +42,17 @@ const Edit = ({
 
     return (
         <form onSubmit={onSubmit} className="edit-form">
-            <label htmlFor="title">Task:
-                <input type="text" name="title" id="title" value={editedTask.title} onChange={onChangeHandler} />
-            </label>
-            <label htmlFor="date">Date:
-                <input type="date" name="start" value={editedTask.start} onChange={onChangeHandler} />
-            </label>
+            <label htmlFor="title">Task:</label>
+            <input type="text" name="title" id="title" value={editedTask.title} onChange={onChangeHandler} />
+            <label htmlFor="date">Date:</label>
+            <input type="date" name="start" value={editedTask.start} onChange={onChangeHandler} />
             <label htmlFor="start-time">Start at:
-                <input type="time" name="startTime" value={editedTask.startTime} onChange={onChangeHandler} />
             </label>
-            <label htmlFor="endTime">End at:
-                <input type="time" name="endTime" value={editedTask.endTime} onChange={onChangeHandler} />
-            </label>
+            <input type="time" name="startTime" value={editedTask.startTime} onChange={onChangeHandler} />
+            <label htmlFor="endTime">End at:</label>
+            <input type="time" name="endTime" value={editedTask.endTime} onChange={onChangeHandler} />
             <button>EDIT</button>
             <button onClick={onClose}>BACK</button>
-
         </form>
     );
 }

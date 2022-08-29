@@ -11,6 +11,10 @@
     color: #3174ad;
 }
 
+.text-container p{
+    text-align: center;
+}
+
 .details-container span{
 font-weight: bold;
 }
