@@ -16,35 +16,41 @@ const Edit = ({
     useEffect(() => {
         getTaskById(taskId)
             .then(res => setEditetTask(res))
-    }, [])
+    }, []);
 
     function onChangeHandler(e) {
         setEditetTask(state => ({
             ...state,
             [e.target.name]: e.target.value
-        }))
+        }));
     }
 
-  async function onSubmit(e) {
-        e.prevetDefault();
+    const end = editedTask.start;
+    const finalTask = { ...editedTask, end };
 
-      const res = await updateTask(taskId, editedTask)
-        setAction('create')
+    async function onSubmit(e) {
+        e.preventDefault();
+        if (Object.values(finalTask).some(t => t === '')) {
+            return alert('All fields are required!');
+        }
+        const res = await updateTask(taskId, finalTask);
+        console.log(res);
+        setAction('create');
     }
 
     return (
-        <form onSubmit={onSubmit} >
+        <form onSubmit={onSubmit} className="edit-form">
             <label htmlFor="title">Task:
                 <input type="text" name="title" id="title" value={editedTask.title} onChange={onChangeHandler} />
             </label>
             <label htmlFor="date">Date:
-                <input type="date" name="date" value={editedTask.start} onChange={onChangeHandler} />
+                <input type="date" name="start" value={editedTask.start} onChange={onChangeHandler} />
             </label>
             <label htmlFor="start-time">Start at:
-                <input type="time" name="start-time" value={editedTask.startTime} onChange={onChangeHandler} />
+                <input type="time" name="startTime" value={editedTask.startTime} onChange={onChangeHandler} />
             </label>
-            <label htmlFor="end-time">End at:
-                <input type="time" name="end-time" value={editedTask.endTime} onChange={onChangeHandler} />
+            <label htmlFor="endTime">End at:
+                <input type="time" name="endTime" value={editedTask.endTime} onChange={onChangeHandler} />
             </label>
             <button>Add</button>
         </form>

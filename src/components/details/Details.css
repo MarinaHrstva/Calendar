@@ -1,0 +1,18 @@
+.details-container{
+    font-family: Helvetica, sans-serif;
+    margin-left: 44%;
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+}
+
+.details-container h3{
+    text-align: center;
+}
+
+.buttons-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 0.5rem;
+}

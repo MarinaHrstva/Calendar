@@ -1,4 +1,4 @@
-import { del, get, post, patch } from "./api.js";
+import { del, get, post, put } from "./api.js";
 
 export async function getTaskById(id) {
     return get('/jsonstore/tasks/' + id);
@@ -13,8 +13,8 @@ export async function createTask(task) {
 }
 
 export async function updateTask(id, task) {
-console.log('patch');
-    return patch(`/jsonstore/tasks/` + id, task)
+console.log('put');
+    return put(`/jsonstore/tasks/` + id, task)
 }
 
 export async function deleteTask(id) {
