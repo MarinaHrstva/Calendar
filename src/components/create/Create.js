@@ -1,15 +1,17 @@
-import { createTask, deleteTask } from '../../api/tasks';
+import { createTask } from '../../api/tasks';
 
 import './Create.css'
 
 
 const Create = ({
-    isHidden
+    setTasks
 }) => {
 
-    const onSubmit = (e) => {
+    async function onSubmit(e) {
+
+
         e.preventDefault();
-        
+
         const formData = new FormData(e.target)
         const task = {
             title: formData.get('title'),
@@ -23,13 +25,15 @@ const Create = ({
             return alert('All fields are required!')
         }
 
-        createTask(task);
-        e.target.reset()
+        createTask(task)
+            .then(res => {
+                setTasks(state=>[...state,res])
+            })
 
     }
 
     return (
-        <div className="form-wrapper" style={{ display: isHidden ? 'none' : 'flex' }}>
+        <div className="form-wrapper" >
             <h2>ADD NEW TASK</h2>
             <form onSubmit={onSubmit} >
                 <label htmlFor="title">Task:

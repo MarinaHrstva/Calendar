@@ -2,21 +2,20 @@ import { deleteTask } from "../../api/tasks";
 
 const Details = ({
     task,
-    action,
     setAction
 }) => {
 
     function onEditHandler(e) {
-        setAction('edit')
+        setAction('edit');
     }
 
     function onDeleteHandler() {
-        deleteTask(task._id)
-        setAction('create')
+        deleteTask(task._id);
+        setAction('create');
     }
 
     function onCloseHandler() {
-        setAction('create')
+        setAction('create');
     }
 
     return (

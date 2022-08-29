@@ -17,7 +17,6 @@ async function request(url, method, data) {
         const res = await fetch(host + url, options);
 
         if (res.ok == false) {
-          
             const error = await res.json();
             throw new Error(error.message);
         }
@@ -43,8 +42,8 @@ export async function post(url, data) {
     return request(url, 'post', data)
 }
 
-export async function put(url, data) {
-    return request(url, 'put', data)
+export async function patch(url, data) {
+    return request(url, 'patch', data)
 }
 
 export async function del(url) {
