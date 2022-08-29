@@ -1,7 +1,7 @@
 import { deleteTask } from "../../api/tasks";
 import './Details.css'
 
-const Details = ({ task, setAction }) => {
+const Details = ({ task, setAction, onClose}) => {
   function onEditHandler(e) {
     setAction("edit");
   }
@@ -11,22 +11,20 @@ const Details = ({ task, setAction }) => {
     setAction("create");
   }
 
-  function onCloseHandler() {
-    setAction("create");
-  }
+
 
   return (
     <div className="details-container">
       <div className="text-container">
         <h3>{task.title}</h3>
-        <p>Start at: {task.startTime}</p>
-        <p>End at: {task.endTime}</p>
+        <p><span>Start at:</span> {task.startTime}</p>
+        <p><span>End at:</span> {task.endTime}</p>
       </div>
       <div className="buttons-container">
         <button onClick={onEditHandler}>Edit</button>
         <button onClick={onDeleteHandler}>Delete</button>
         <button className="closeBtn"
-         onClick={onCloseHandler}>Back
+         onClick={onClose}>Back
         </button>
       </div>
     </div>

@@ -1,0 +1,33 @@
+.edit-form{
+    font-family: Helvetica, sans-serif;
+    margin-top: 5rem;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.edit-form input{
+    padding: 0.25rem;
+    margin-right: 2rem;
+    height: 25px;
+    border-radius: 5px;
+    border: 0.5px solid #3174ad;
+    width: 200px;
+}
+
+.edit-form input button{
+    border: 0.5px solid #3174ad;
+    border-radius: 5px;
+    width: 150px;
+    background-color: white;
+    color: #3174ad;
+    font-weight: bold;
+    height: 35px;
+    transition: all 300ms ease-in;
+}
+
+.edit-form input button:hover{
+    cursor: pointer;
+    background-color: #3174ad;
+    color: white;
+}

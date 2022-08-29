@@ -37,6 +37,9 @@ function App() {
 		locales
 	})
 
+	function onCloseHandler() {
+		setAction("create");
+	  }
 
 	function onClickHandler(e) {
 
@@ -50,8 +53,8 @@ function App() {
 	return (
 		<div className="App" onClick={onClickHandler}>
 			{action === 'create' && <Create setTasks={setTasks}/>}
-			{action === 'edit' && <Edit taskId={selected._id} setAction={setAction} />}
-			{action === 'details' && <Details task={selected} setAction={setAction} />}
+			{action === 'edit' && <Edit taskId={selected._id} setAction={setAction} onClose={onCloseHandler}/>}
+			{action === 'details' && <Details task={selected} setAction={setAction} onClose={onCloseHandler}/>}
 
 			<Calendar localizer={localizer}
 				events={tasks}

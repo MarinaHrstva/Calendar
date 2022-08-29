@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { getTaskById, updateTask } from "../../api/tasks";
+import './Edit.css'
 
 const Edit = ({
     taskId,
-    setAction
+    setAction,
+    onClose
 }) => {
 
     const [editedTask, setEditetTask] = useState({
@@ -52,7 +54,9 @@ const Edit = ({
             <label htmlFor="endTime">End at:
                 <input type="time" name="endTime" value={editedTask.endTime} onChange={onChangeHandler} />
             </label>
-            <button>Add</button>
+            <button>EDIT</button>
+            <button onClick={onClose}>BACK</button>
+
         </form>
     );
 }
