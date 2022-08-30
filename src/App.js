@@ -11,7 +11,6 @@ import Details from './components/details/Details'
 import { useEffect, useState } from 'react'
 import { getAllTasks } from './api/tasks'
 
-// import './App.css';
 
 function App() {
 	const [tasks, setTasks] = useState([]);
