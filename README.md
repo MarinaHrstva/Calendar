@@ -32,13 +32,14 @@ Editing the task loads the current data into the form and the user can change it
 * HTML & CSS
 * react-big-calendar
 * date-fns
+  
+<br>
 
 ## For the back-end is used:
 [SoftUni Practice Server](https://github.com/softuni-practice-server/softuni-practice-server)
 
 To execute it manually open a command prompt and run `node server.js`.
 
-<br>
 <br>
 
 ## Available Scripts
