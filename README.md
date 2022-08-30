@@ -9,6 +9,8 @@ A simple Scheduler Application
 <br>
 
 Allows adding, editing and deleting tasks.
+
+With the app running, the Add Task view is visible
 <br>
 
 When you click on the task, a detail view is displayed. From this view, the user can delete or edit the task, or they can return to the main view.
